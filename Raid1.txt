@@ -1,0 +1,35 @@
+    1  yum install mdadm -y
+    2  #mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc
+    3  lsblk
+    4  mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 /dev/sdb /dev/sdc
+    5  # mdadm --create --verbose /dev/md0 --level=0 --raid-devices=2 /dev/sdb /dev/sdc
+    6  lsblk
+    7  mdadm --create --verbose /dev/md1 --level=1 --raid-devices=2 /dev/sdb /dev/sdc
+    8  lsblk
+    9  mdadm --detail /dev/md1
+   10  fdisk /dev/md1
+   11  fdisk -l
+   12  blkid
+   13  vi /etc/fstab
+   14   mkfs.ext4 /dev/md1p1
+   15   mkdir /mnt/raid1
+   16   mount /dev/md1p1 /mnt/raid1/
+   17  dh -h
+   18  df -h
+   19   cd /mnt/raid1/
+   20  ls
+   21  blkid
+   22  vi /etc/fstab
+   23  mount -a
+   24  ls
+   25  cat > test.txt
+   26  ls
+   27  cd /mnt/raid1/
+   28  ls
+   29  cat test.txt
+   30  mdadm -detail /dev/md1
+   31  mdadm -detail /dev/md0
+   32  mdadm --detail /dev/md1
+   33  lsblk
+   34  cat /proc/mdstat
+   35  mdadm --add /dev/md1 /dev/sdc

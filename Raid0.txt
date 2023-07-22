@@ -1,0 +1,25 @@
+    1  lsblk
+    2  #yum clean all
+    3  #yum update
+    4  yum install mdadm -y
+    5  mdadm --create --verbose /dev/md0--level=0 --raid-devices=2 /dev/sdb/dev/sdc
+    6  mdadm --create --verbose /dev/md0 --level=0 --raid-devices=2 /dev/sdb /dev/sdc
+    7  lsblk
+    8  mdadm --details /dev/md0
+    9  mdadm  --detail /dev/md0
+   10  fdisk /dev/md0
+   11  fdisk -l
+   12  mkfs.ext4 /dev/md0p1
+   13  mkdir /mnt/raid0
+   14  mount /dev/md0p1 /mnt/raid0/
+   15  df -h
+   16  ls
+   17  cd /mnt/raid0/
+   18  ls
+   19  touch test
+   20  ls
+   21  dd if=/dev/zero of=500mb.file bs=1024 count=502400
+   22  df -h
+   23  lsblk -tmd
+   24*
+   25  lsblk -tmd
